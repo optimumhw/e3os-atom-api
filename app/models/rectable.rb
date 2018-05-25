@@ -1,0 +1,2 @@
+class Rectable < ApplicationRecord
+end
