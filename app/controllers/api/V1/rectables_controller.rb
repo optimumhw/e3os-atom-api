@@ -32,6 +32,12 @@ module Api
 				end
 			end
 
+			def latest
+				rectable = Rectable.find_by(params[:site_id]).order(:created_at).take
+				render json: {status: 'SUCCESS', message: 'Loaded rectable', data:rectable }, status: :ok
+
+			end
+
 
 			private
 

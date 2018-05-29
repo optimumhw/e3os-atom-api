@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180525163215) do
+ActiveRecord::Schema.define(version: 20180529160817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "invalid_combos", force: :cascade do |t|
+    t.integer "site_id"
+    t.integer "number_chillers"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "invalid_entries", default: [], array: true
+  end
 
   create_table "rectables", force: :cascade do |t|
     t.integer "site_id"
