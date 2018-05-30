@@ -26,7 +26,7 @@ module Api
 				rectable = Rectable.find(params[:id])
 				if rectable.update_attributes( rectable_params )
 					render json: {status: 'SUCCESS', message: 'rectable updated', data:rectable }, status: :ok
-				elseß
+				else
 					render json: {status: 'ERROR', message: 'rectable not updated', 
 						data:rectable.errors }, status: :unprocessable_entity
 				end
