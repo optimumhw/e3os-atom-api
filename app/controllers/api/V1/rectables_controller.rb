@@ -26,18 +26,16 @@ module Api
 				rectable = Rectable.find(params[:id])
 				if rectable.update_attributes( rectable_params )
 					render json: {status: 'SUCCESS', message: 'rectable updated', data:rectable }, status: :ok
-				else
+				elseß
 					render json: {status: 'ERROR', message: 'rectable not updated', 
 						data:rectable.errors }, status: :unprocessable_entity
 				end
 			end
 
 			def latest
-				rectable = Rectable.find_by(params[:site_id]).order(:created_at).take
-				render json: {status: 'SUCCESS', message: 'Loaded rectable', data:rectable }, status: :ok
-
+				rectable = Rectable.latest!( params[:site_id])
+				render json: {status: 'SUCCESS', message: 'Loaded latest rectable', data:rectable }, status: :ok
 			end
-
 
 			private
 
